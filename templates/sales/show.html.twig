@@ -21,7 +21,7 @@
         <tr>
             <td>{{ row.date|date("Y-m-d g:i:s") }}</td>
             <td>{{ row.product }}</td>
-            <td>{{ row.amount }}</td>
+            <td>{{ (row.amount)|number_format(2, '.', ',') }}</td>
         </tr>
         {% endfor %}
       </table>

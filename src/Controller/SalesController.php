@@ -91,17 +91,20 @@ class SalesController extends AbstractController
                         ->findBy(array('product' => $sale->getProduct()));
 
                 //findBy(array('name' => 'Registration'),array('name' => 'ASC'),1 ,0)[0]
-                echo $sale->getProduct();
+                //echo $sale->getProduct();
             }  else {
                 $res = $this->getDoctrine()
                         ->getRepository(Sale::class)
                         ->findAll();
             }
-            if (!$res) {
-                $message = 'No sales found for '.$sale->getProduct();
-            }
+        } else {
+            $res = $this->getDoctrine()
+                    ->getRepository(Sale::class)
+                    ->findAll();
         }
-
+        if (!$res) {
+            $message = 'No sales found for '.$sale->getProduct();
+        }
         return $this->render('sales/show.html.twig', [
             'res' => $res, 'message' => $message, 'form' => $form->createView()
         ]);
