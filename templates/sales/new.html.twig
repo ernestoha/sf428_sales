@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}New Sale{% endblock %}
+{% block body %}
+    {% block content %}
+    <form action="{{ path('sales_new') }}" method="post">
+    {{ form_widget(form,  { 'attr': {'class': 'sales_form'} }) }}
+    </form>
+
+    <div id="message">{{ message|raw }}</div>
+
+    {% endblock %}
+    
+{% endblock %}

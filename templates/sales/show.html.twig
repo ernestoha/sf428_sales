@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %}Show Sales{% endblock %}
+{% block body %}
+
+  {% block content %}
+
+    <form action="{{ path('sales_show') }}" method="post">
+    {{ form_widget(form,  { 'attr': {'class': 'sales_form'} }) }}
+    </form>
+
+    <div id="message">{{ message|raw }}</div>
+
+    {% if (res|length>0) %}
+      <table border="0" border-spacing="0" width="60%" border-style="solid" style="margin-top:30px"">
+        <tr bgcolor="#B5C9FC" height="40px">
+            <th>Date</th>
+            <th>Product</th>
+            <th>Amount</th>
+        </tr>
+        {% for row in res %}
+        <tr>
+            <td>{{ row.date|date("Y-m-d g:i:s") }}</td>
+            <td>{{ row.product }}</td>
+            <td>{{ row.amount }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    {% endif %}
+    
+  {% endblock %}
+  
+{% endblock %}
