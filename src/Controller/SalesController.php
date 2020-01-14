@@ -21,6 +21,14 @@ class SalesController extends AbstractController
 {
 
     /**
+     * @Route("/react/sales/", name="react_sales"))
+     */
+    public function react()
+    {
+        return $this->render('react/sales.html.twig');
+    }
+
+    /**
      * @Route("/sales/new", name="sales_new"))
      */
     public function insert()
